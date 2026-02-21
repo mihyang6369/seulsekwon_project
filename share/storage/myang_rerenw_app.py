@@ -22,13 +22,16 @@ import datetime
 import os
 from dotenv import load_dotenv
 
+# 현재 파일 위치: .../seulsekwon_project/share/storage/renew_app.py
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
 # 예상되는 .env 위치 후보들
+# 1. seulsekwon_project/.env (현재 파일 기준 상위 3단계)
+# 2. pj/.env (현재 파일 기준 상위 4단계 - 프로젝트 루트)
 possible_paths = [
     os.path.join(current_dir, '.env'), # 현재 디렉토리
-    os.path.join(os.path.dirname(os.path.dirname(current_dir)), '.env'), # seoul_seulsekwon/.env (2단계 위)
-    os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(current_dir))), '.env'), # 그 위
+    os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(current_dir))), '.env'), # seulsekwon_project/.env
+    os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(current_dir)))), '.env') # pj/.env
 ]
 
 env_path = None
